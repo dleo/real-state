@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('taxes', 15, 2)->default(0);
             $table->decimal('income', 15, 2)->default(0);
             $table->decimal('expenditure', 15, 2)->default(0);
+            $table->string('external_id')->unique()->nullable();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ class Property extends Model
         'taxes',
         'income',
         'expenditure',
+        'external_id',
     ];
 
     protected function casts(): array
