@@ -14,7 +14,7 @@ class PropertyController extends Controller
     {
         $properties = $request->user()->properties;
 
-        return response()->json($properties);
+        return response()->json(['data' => $properties]);
     }
 
     public function store(StorePropertyRequest $request): JsonResponse
@@ -33,7 +33,7 @@ class PropertyController extends Controller
             'expenditure' => $validated['expenditure'] ?? 0,
         ]);
 
-        return response()->json($property, 201);
+        return response()->json(['data' => $property], 201);
     }
 
     public function show(Request $request, Property $property): JsonResponse
@@ -41,7 +41,7 @@ class PropertyController extends Controller
         if ($property->user_id !== $request->user()->id) {
             return response()->json(['message' => 'Forbidden'], 403);
         }
-        return response()->json($property);
+        return response()->json(['data' => $property]);
     }
 
     public function update(UpdatePropertyRequest $request, Property $property): JsonResponse
@@ -58,7 +58,7 @@ class PropertyController extends Controller
             'expenditure' => $validated['expenditure'] ?? 0,
         ]);
 
-        return response()->json($property);
+        return response()->json(['data' => $property]);
     }
 
     public function destroy(Request $request, Property $property): JsonResponse
@@ -69,6 +69,6 @@ class PropertyController extends Controller
 
         $property->delete();
 
-        return response()->json(null, 204);
+        return response()->json(['data' => null], 204);
     }
 }
