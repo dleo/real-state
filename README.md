@@ -167,3 +167,6 @@ This allows external systems to either provide their own identifiers or rely on 
 ## License
 
 MIT
+
+## Author
+David Lopez
